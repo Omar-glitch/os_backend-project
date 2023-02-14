@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form enctype="multipart/form-data">
+    <input id="p" type="text" name="path" placeholder="path" />
+    <input type="text" name="oldPath" placeholder="oldPath" />
+    <input type="text" name="newPath" placeholder="newPath" />
+    <textarea name="content" id="" cols="30" rows="10" placeholder="content"></textarea>
+    <button>enviar</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', e => {
+      const formdata = new URLSearchParams(new FormData(form));
+
+      e.preventDefault();
+
+      // GET FILE
+      // const p = document.querySelector('#p')
+      // fetch(`http://localhost:5000/file/?path=${p.value}`, {method: 'GET'})
+      //   .then(console.log)
+      //   .catch(console.log)
+
+      // POST FILE
+      // fetch('http://localhost:5000/file/', {method: 'POST', body: formdata, headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      //   .then(console.log)
+      //   .catch(console.log)
+      // })
+
+      // PUT
+      // fetch('http://localhost:5000/file/', {method: 'PUT', body: formdata, headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      //   .then(console.log)
+      //   .catch(console.log)
+
+      // DELETE
+      // fetch('http://localhost:5000/file/', {method: 'DELETE', body: formdata, headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      //   .then(console.log)
+      //   .catch(console.log)
+
+
+      // GET FILE
+      // const p = document.querySelector('#p')
+      // fetch(`http://localhost:5000/folder/?path=${p.value}`, {method: 'GET'})
+      //   .then(console.log)
+      //   .catch(console.log)
+
+      // POST FILE
+      // fetch('http://localhost:5000/folder/', {method: 'POST', body: formdata, headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      //   .then(console.log)
+      //   .catch(console.log)
+
+      // PUT
+      fetch('http://localhost:5000/folder/', {method: 'DELETE', body: formdata, headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+        .then(console.log)
+        .catch(console.log)
+    })
+  </script>
+</body>
+</html>
