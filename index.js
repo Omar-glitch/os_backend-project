@@ -2,6 +2,7 @@ const express = require("express");
 require('dotenv').config();
 const fileRoute = require("./routes/File")
 const folderRoute = require("./routes/Folder")
+const diskRoute = require("./routes/Disk")
 const cors = require('cors')
 const fs = require('fs');
 
@@ -10,12 +11,12 @@ if (!fs.existsSync(process.env.ROOT))
 
 const app = express();
 
-// app.use(express.static(__dirname))
 app.use(cors({ origin: '*' }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use("/file", fileRoute);
 app.use("/folder", folderRoute);
+app.use('/disk', diskRoute)
 
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}\\view\\index.html`)

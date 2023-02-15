@@ -32,6 +32,9 @@ const canAddFile = (filePath, content = '') => {
   const pathParse = path.parse(filePath);
   const dirPath = `${ROOT}/${pathParse.dir}`;
 
+  if (!filePath.includes('.txt'))
+    return {error : 'cannot set text file without extension'}
+
   if (!fs.existsSync(dirPath))
     return {error : 'directory does not exists'}
   const files = filesInFolder(dirPath);
@@ -58,8 +61,13 @@ const canAddFile = (filePath, content = '') => {
 const canAddFolder = (folderPath) => {
   const pathParse = path.parse(folderPath);
   if (pathParse.name.trim().length === 0) return {error : 'directory name is empty'}
+
+  if (folderPath.includes('.txt'))
+    return {error : 'directory cannot include .txt in his name'}
   
   const dirPath = `${ROOT}/${pathParse.dir}`;
+  if (fs.existsSync(`${ROOT}/${folderPath}`)) 
+    return {error : 'directory actually exists'}
   if (!fs.existsSync(dirPath))
     return {error : 'directory does not exists'}
 

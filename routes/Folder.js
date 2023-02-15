@@ -57,7 +57,7 @@ router.put('/copy', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  const path = req.body.path;
+  const path = req.query.path;
 
   if (!fs.existsSync(`${ROOT}\\${path}`))
     return res.status(404).json({error : 'folder does not exists'})

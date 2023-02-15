@@ -45,6 +45,7 @@ router.put('/', (req, res) => {
 router.put('/copy', (req, res) => {
   const oldPath = req.body.oldPath;
   const newPath = req.body.newPath;
+  console.log(req.body)
 
   if (!fs.existsSync(`${ROOT}\\${oldPath}`))
     return res.status(400).json({error: 'cannot find file to copy'})
@@ -58,7 +59,7 @@ router.put('/copy', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  const path = req.body.path;
+  const path = req.query.path;
 
   if (!fs.existsSync(`${ROOT}\\${path}`))
     return res.status(400).json({error: 'cannot find file to delete'})
